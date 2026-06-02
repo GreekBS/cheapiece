@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="700" viewBox="0 0 1920 700" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="hp-bg" x1="0" y1="0" x2="1920" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1e1b4b"/>
+      <stop offset="0.4" stop-color="#312e81"/>
+      <stop offset="0.75" stop-color="#4c1d95"/>
+      <stop offset="1" stop-color="#581c87"/>
+    </linearGradient>
+    <linearGradient id="hp-neon" x1="1280" y1="40" x2="1880" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e879f9" stop-opacity="0.45"/>
+      <stop offset="0.45" stop-color="#a855f7" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0.18"/>
+    </linearGradient>
+    <linearGradient id="hp-sneaker" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#faf5ff"/>
+      <stop offset="1" stop-color="#e9d5ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="700" fill="url(#hp-bg)"/>
+  <ellipse cx="1560" cy="320" rx="400" ry="280" fill="url(#hp-neon)" opacity="0.9"/>
+  <!-- monitor / gaming -->
+  <g transform="translate(920 120)">
+    <rect x="0" y="20" width="380" height="240" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <rect x="16" y="36" width="348" height="200" rx="4" fill="#1e293b"/>
+    <rect x="40" y="60" width="300" height="152" rx="2" fill="#312e81" opacity="0.85"/>
+    <path d="M60 180 L120 120 L180 200 L240 100 L300 180" stroke="#e879f9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.7" fill="none"/>
+    <rect x="150" y="260" width="80" height="60" rx="6" fill="#1e293b" stroke="#475569"/>
+    <rect x="110" y="300" width="160" height="12" rx="4" fill="#334155"/>
+  </g>
+  <!-- phone + accessories -->
+  <g transform="translate(1340 200)">
+    <rect x="0" y="0" width="100" height="200" rx="14" fill="#1e293b" stroke="#64748b"/>
+    <rect x="10" y="18" width="80" height="150" rx="4" fill="#0ea5e9" opacity="0.25"/>
+    <rect x="130" y="60" width="120" height="72" rx="12" fill="#334155" stroke="#a78bfa" stroke-width="1" opacity="0.9"/>
+    <circle cx="190" cy="96" r="18" fill="#e879f9" opacity="0.35"/>
+  </g>
+  <!-- sneaker silhouette simplified -->
+  <g transform="translate(1180 420)" opacity="0.92">
+    <path d="M0 80c80-20 160-10 220 20s100 50 140 90H0V80Z" fill="url(#hp-sneaker)" opacity="0.55"/>
+    <path d="M20 100c60-15 140-5 200 25l40 65H20V100Z" fill="#fae8ff" opacity="0.35"/>
+    <ellipse cx="280" cy="175" rx="70" ry="22" fill="#c4b5fd" opacity="0.5"/>
+  </g>
+  <!-- controller -->
+  <g transform="translate(1580 440)" opacity="0.65">
+    <rect x="0" y="20" width="220" height="100" rx="36" fill="#1e293b" stroke="#7c3aed"/>
+    <circle cx="48" cy="70" r="16" fill="#475569"/>
+    <circle cx="172" cy="70" r="16" fill="#475569"/>
+    <rect x="96" y="58" width="28" height="28" rx="6" fill="#a78bfa" opacity="0.6"/>
+  </g>
+  <circle cx="320" cy="200" r="100" fill="#22d3ee" opacity="0.08"/>
+  <circle cx="400" cy="480" r="140" fill="#e879f9" opacity="0.06"/>
+</svg>

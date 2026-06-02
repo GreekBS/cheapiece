@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="700" viewBox="0 0 1920 700" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="ht-bg" x1="0" y1="0" x2="1920" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#eef4ff"/>
+      <stop offset="0.45" stop-color="#e0e9ff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="ht-glow" x1="1200" y1="80" x2="1750" y2="650" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38bdf8" stop-opacity="0.35"/>
+      <stop offset="0.5" stop-color="#6366f1" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#818cf8" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="ht-device" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="700" fill="url(#ht-bg)"/>
+  <ellipse cx="1480" cy="360" rx="420" ry="320" fill="url(#ht-glow)" opacity="0.95"/>
+  <!-- laptop -->
+  <g transform="translate(980 140)">
+    <rect x="0" y="40" width="340" height="210" rx="14" fill="url(#ht-device)" stroke="#cbd5e1" stroke-width="1.2"/>
+    <rect x="18" y="56" width="304" height="178" rx="6" fill="#0f172a" opacity="0.92"/>
+    <rect x="36" y="72" width="268" height="146" rx="4" fill="#1e3a5f" opacity="0.85"/>
+    <path d="M-20 250h380l-24 28H4L-20 250Z" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <rect x="120" y="258" width="100" height="6" rx="3" fill="#94a3b8"/>
+  </g>
+  <!-- phone -->
+  <g transform="translate(1320 200)">
+    <rect x="0" y="0" width="112" height="228" rx="18" fill="url(#ht-device)" stroke="#cbd5e1" stroke-width="1.2"/>
+    <rect x="10" y="16" width="92" height="196" rx="10" fill="#0f172a"/>
+    <rect x="18" y="28" width="76" height="160" rx="4" fill="#1d4ed8" opacity="0.35"/>
+    <circle cx="56" cy="210" r="5" fill="#64748b"/>
+  </g>
+  <!-- headphones -->
+  <g transform="translate(1080 420)" stroke="#475569" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.55">
+    <path d="M20 20c0-55 45-100 100-100s100 45 100 100"/>
+    <path d="M20 20v70c0 11 9 20 20 20h18"/>
+    <path d="M220 20v70c0 11-9 20-20 20h-18"/>
+  </g>
+  <!-- controller hint -->
+  <g transform="translate(1540 440)" opacity="0.5">
+    <rect x="0" y="0" width="200" height="120" rx="28" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <circle cx="52" cy="60" r="14" fill="#e2e8f0"/>
+    <circle cx="148" cy="60" r="14" fill="#e2e8f0"/>
+    <path d="M88 48h24v24H88z" rx="4" fill="#cbd5e1"/>
+  </g>
+  <!-- accent orbs -->
+  <circle cx="260" cy="120" r="90" fill="#38bdf8" opacity="0.12"/>
+  <circle cx="1680" cy="140" r="70" fill="#6366f1" opacity="0.15"/>
+</svg>

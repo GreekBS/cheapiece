@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "1.0",
+  "taxonomyVersion": "1.0.0",
+  "catalog": "default-marketplace",
+  "defaultTenantId": "11111111-1111-4111-8111-111111111111",
+  "roots": [
+    {
+      "name": "Τεχνολογία",
+      "slug": "tech",
+      "sortOrder": 1,
+      "emoji": "💻",
+      "children": [
+        { "name": "Κινητή Τηλεφωνία", "slug": "tech-kiniti-tilefonia", "sortOrder": 1 },
+        { "name": "Εικόνα", "slug": "tech-eikona", "sortOrder": 2 },
+        { "name": "Ηλεκτρονικοί Υπολογιστές", "slug": "tech-ilektronikoi-ypologistes", "sortOrder": 3 },
+        { "name": "Wearables", "slug": "tech-wearables", "sortOrder": 4 },
+        { "name": "Gaming", "slug": "tech-gaming", "sortOrder": 5 },
+        { "name": "Tablets & Αξεσουάρ", "slug": "tech-tablets-axesouar", "sortOrder": 6 },
+        { "name": "Ήχος", "slug": "tech-ichos", "sortOrder": 7 },
+        { "name": "Ηλεκτρονικά", "slug": "tech-ilektronika", "sortOrder": 8 },
+        { "name": "Refurbished", "slug": "tech-refurbished", "sortOrder": 9 },
+        { "name": "Φωτογραφία & Video", "slug": "tech-photografia-video", "sortOrder": 10 },
+        { "name": "Drones & Τηλεκατευθυνόμενα", "slug": "tech-drones-tilekateuthynomena", "sortOrder": 11 },
+        { "name": "Τηλεφωνία", "slug": "tech-tilefonia", "sortOrder": 12 },
+        { "name": "Gadgets", "slug": "tech-gadgets", "sortOrder": 13 }
+      ]
+    },
+    {
+      "name": "Μόδα",
+      "slug": "fashion",
+      "sortOrder": 2,
+      "emoji": "👗",
+      "children": [
+        { "name": "Γυναικεία", "slug": "fashion-gynaikeia", "sortOrder": 1 },
+        { "name": "Ανδρικά", "slug": "fashion-andrika", "sortOrder": 2 },
+        { "name": "Παιδικά - Βρεφικά", "slug": "fashion-paidika-vrefika", "sortOrder": 3 },
+        { "name": "Παπούτσια", "slug": "fashion-papoutsia", "sortOrder": 4 },
+        { "name": "Αξεσουάρ", "slug": "fashion-axesouar", "sortOrder": 5 },
+        { "name": "Outlet", "slug": "fashion-outlet", "sortOrder": 6 }
+      ]
+    },
+    {
+      "name": "Ομορφιά",
+      "slug": "beauty",
+      "sortOrder": 3,
+      "emoji": "💄",
+      "children": [
+        { "name": "Περιποίηση & Μακιγιάζ", "slug": "beauty-peripoihsh-makigiaz", "sortOrder": 1 },
+        { "name": "Συμπληρώματα Διατροφής & Βιταμίνες", "slug": "beauty-sympliromata", "sortOrder": 2 },
+        { "name": "Φαρμακευτικά", "slug": "beauty-farmakeutika", "sortOrder": 3 },
+        { "name": "Sex Shop", "slug": "beauty-sex-shop", "sortOrder": 4 },
+        { "name": "Προσωπική Φροντίδα & Υγιεινή", "slug": "beauty-prosopiki-frontida", "sortOrder": 5 },
+        { "name": "Οπτικά", "slug": "beauty-optika", "sortOrder": 6 },
+        { "name": "Ιατρικά Βοηθήματα", "slug": "beauty-iatrika-voithimata", "sortOrder": 7 },
+        { "name": "Προϊόντα Κάνναβης (CBD)", "slug": "beauty-cbd", "sortOrder": 8 }
+      ]
+    },
+    {
+      "name": "Σπίτι",
+      "slug": "home",
+      "sortOrder": 4,
+      "emoji": "🏠",
+      "children": [
+        { "name": "Συστήματα Ασφαλείας", "slug": "home-asfaleia-systimata", "sortOrder": 1 },
+        { "name": "Έπιπλα", "slug": "home-epipla", "sortOrder": 2 },
+        { "name": "Κουζίνα", "slug": "home-kouzina", "sortOrder": 3 },
+        { "name": "Λευκά Είδη", "slug": "home-lefka-eidi", "sortOrder": 4 },
+        { "name": "Φωτισμός", "slug": "home-fotismos", "sortOrder": 5 },
+        { "name": "Διακόσμηση", "slug": "home-diakosmisi", "sortOrder": 6 },
+        { "name": "Ηλεκτρολογικά & Αυτοματισμοί", "slug": "home-ilektrologika-automatismoi", "sortOrder": 7 },
+        { "name": "Μπάνιο", "slug": "home-mpanio", "sortOrder": 8 },
+        { "name": "Γραφείο", "slug": "home-grafeio", "sortOrder": 9 },
+        { "name": "Τρόφιμα & Ροφήματα", "slug": "home-trofima-rofimata", "sortOrder": 10 },
+        { "name": "Καθαρισμός", "slug": "home-katharismos", "sortOrder": 11 },
+        { "name": "Εκκλησιαστικά", "slug": "home-ekklisiastika", "sortOrder": 12 }
+      ]
+    },
+    {
+      "name": "Αθλητισμός - Ψυχαγωγία",
+      "slug": "sports-leisure",
+      "sortOrder": 5,
+      "emoji": "🏃‍♂️",
+      "children": [
+        { "name": "Είδη Party & Δώρων", "slug": "sports-party-dora", "sortOrder": 1 },
+        { "name": "Αθλητική Μόδα", "slug": "sports-athlitiki-moda", "sortOrder": 2 },
+        { "name": "Ταξίδια", "slug": "sports-taksidia", "sortOrder": 3 },
+        { "name": "Camping", "slug": "sports-camping", "sortOrder": 4 },
+        { "name": "Γυμναστική", "slug": "sports-gymnastiki", "sortOrder": 5 },
+        { "name": "Αθλήματα", "slug": "sports-athlimata", "sortOrder": 6 },
+        { "name": "Κάπνισμα - Άτμισμα", "slug": "sports-kapnisma-atmisma", "sortOrder": 7 },
+        { "name": "Ποδηλασία", "slug": "sports-podilasia", "sortOrder": 8 },
+        { "name": "DIY", "slug": "sports-diy", "sortOrder": 9 },
+        { "name": "Μουσική", "slug": "sports-mousiki", "sortOrder": 10 },
+        { "name": "Παραλία & Πισίνα", "slug": "sports-paralia-pisina", "sortOrder": 11 },
+        { "name": "Yoga - Pilates", "slug": "sports-yoga-pilates", "sortOrder": 12 }
+      ]
+    },
+    {
+      "name": "Παιδικά - Βρεφικά",
+      "slug": "kids-baby",
+      "sortOrder": 6,
+      "emoji": "👶",
+      "children": [
+        { "name": "Παιχνίδια", "slug": "kids-paichnidia", "sortOrder": 1 },
+        { "name": "Μόδα", "slug": "kids-moda", "sortOrder": 2 },
+        { "name": "Βόλτα Μωρού", "slug": "kids-volta-mwrou", "sortOrder": 3 },
+        { "name": "Έπιπλα", "slug": "kids-epipla", "sortOrder": 4 },
+        { "name": "Βιβλία", "slug": "kids-vivlia", "sortOrder": 5 },
+        { "name": "Σχολικά", "slug": "kids-scholika", "sortOrder": 6 },
+        { "name": "Φαγητό Μωρού", "slug": "kids-fagito-mwrou", "sortOrder": 7 },
+        { "name": "Βαπτιστικά", "slug": "kids-vaptistika", "sortOrder": 8 },
+        { "name": "Βρεφικό Δωμάτιο", "slug": "kids-vrefiko-domatio", "sortOrder": 9 },
+        { "name": "Υγιεινή Μωρού", "slug": "kids-ygieini-mwrou", "sortOrder": 10 },
+        { "name": "Διακόσμηση Δωματίου", "slug": "kids-diakosmisi-domatiou", "sortOrder": 11 },
+        { "name": "Προίκα Μωρού", "slug": "kids-proika-mwrou", "sortOrder": 12 },
+        { "name": "Λευκά Είδη", "slug": "kids-lefka-eidi", "sortOrder": 13 }
+      ]
+    },
+    {
+      "name": "Auto - Moto",
+      "slug": "automoto",
+      "sortOrder": 7,
+      "emoji": "🚗",
+      "children": [
+        { "name": "Αυτοκίνητο", "slug": "auto-autokinito", "sortOrder": 1 },
+        { "name": "Μοτοσυκλέτα", "slug": "auto-motosykleeta", "sortOrder": 2 },
+        { "name": "Σκάφος", "slug": "auto-skafos", "sortOrder": 3 }
+      ]
+    },
+    {
+      "name": "Κατοικίδια",
+      "slug": "pets",
+      "sortOrder": 8,
+      "emoji": "🐾",
+      "children": [
+        { "name": "Σκύλοι", "slug": "pets-skiloi", "sortOrder": 1 },
+        { "name": "Γάτες", "slug": "pets-gates", "sortOrder": 2 },
+        { "name": "Ψάρια", "slug": "pets-psaria", "sortOrder": 3 },
+        { "name": "Πτηνά", "slug": "pets-ptina", "sortOrder": 4 },
+        { "name": "Τρωκτικά", "slug": "pets-troktila", "sortOrder": 5 },
+        { "name": "Ερπετά", "slug": "pets-erpetta", "sortOrder": 6 }
+      ]
+    },
+    {
+      "name": "Βιβλία",
+      "slug": "books",
+      "sortOrder": 9,
+      "emoji": "📚",
+      "children": [
+        { "name": "Λογοτεχνία", "slug": "books-logotechnia", "sortOrder": 1 },
+        { "name": "Παιδικά", "slug": "books-paidika", "sortOrder": 2 },
+        { "name": "Manga", "slug": "books-manga", "sortOrder": 3 },
+        { "name": "Hobby", "slug": "books-hobby", "sortOrder": 4 },
+        { "name": "Επιστημονικά", "slug": "books-epistimonika", "sortOrder": 5 },
+        { "name": "Σχολικά", "slug": "books-scholika", "sortOrder": 6 },
+        { "name": "Ξενόγλωσσα", "slug": "books-xenoglosa", "sortOrder": 7 },
+        { "name": "Self Improvement", "slug": "books-self-improvement", "sortOrder": 8 },
+        { "name": "Comics", "slug": "books-comics", "sortOrder": 9 },
+        { "name": "Τέχνη", "slug": "books-tehni", "sortOrder": 10 },
+        { "name": "Θρησκεία", "slug": "books-thriskeia", "sortOrder": 11 },
+        { "name": "Ιστορία", "slug": "books-istoria", "sortOrder": 12 },
+        { "name": "Business", "slug": "books-business", "sortOrder": 13 },
+        { "name": "Ψυχολογία", "slug": "books-psychologia", "sortOrder": 14 },
+        { "name": "Βιογραφίες", "slug": "books-viografies", "sortOrder": 15 },
+        { "name": "Πολιτικά", "slug": "books-politika", "sortOrder": 16 },
+        { "name": "Γονείς", "slug": "books-goneis", "sortOrder": 17 },
+        { "name": "Εκπαίδευση", "slug": "books-ekpaidefsi", "sortOrder": 18 },
+        { "name": "Ποίηση", "slug": "books-poiisi", "sortOrder": 19 },
+        { "name": "Φιλοσοφία", "slug": "books-filosofia", "sortOrder": 20 },
+        { "name": "Κλασικά", "slug": "books-klassika", "sortOrder": 21 },
+        { "name": "Εγκυμοσύνη", "slug": "books-egkymosyni", "sortOrder": 22 },
+        { "name": "Γλώσσες", "slug": "books-glosses", "sortOrder": 23 },
+        { "name": "Περιοδικά", "slug": "books-periodika", "sortOrder": 24 }
+      ]
+    },
+    {
+      "name": "Οικιακές Συσκευές",
+      "slug": "household-appliances",
+      "sortOrder": 10,
+      "emoji": "🏠",
+      "children": [
+        { "name": "Θέρμανση & Κλιματισμός", "slug": "appliances-thermansi-klimatismos", "sortOrder": 1 },
+        { "name": "Λευκές Συσκευές", "slug": "appliances-lefkes-syskeves", "sortOrder": 2 },
+        { "name": "Καθαρισμός", "slug": "appliances-katharismos", "sortOrder": 3 },
+        { "name": "Air Quality", "slug": "appliances-air-quality", "sortOrder": 4 },
+        { "name": "Μαγείρεμα", "slug": "appliances-mageirema", "sortOrder": 5 },
+        { "name": "Καφετιέρες", "slug": "appliances-kafetieres", "sortOrder": 6 },
+        { "name": "Πρωινό & Snacks", "slug": "appliances-proino-snacks", "sortOrder": 7 },
+        { "name": "Σιδέρωμα", "slug": "appliances-sideroma", "sortOrder": 8 },
+        { "name": "Food Processing", "slug": "appliances-food-processing", "sortOrder": 9 },
+        { "name": "Stock Appliances", "slug": "appliances-stock", "sortOrder": 10 },
+        { "name": "Sets", "slug": "appliances-sets", "sortOrder": 11 }
+      ]
+    }
+  ]
+}
