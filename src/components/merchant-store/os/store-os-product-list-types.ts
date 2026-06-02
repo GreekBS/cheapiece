@@ -155,7 +155,8 @@ export function canActivateOffer(product: StoreOsProduct): boolean {
 }
 
 /** Owner-only merchant delete — available on all visible product rows. */
-export function canRemoveMerchantProduct(): boolean {
+export function canRemoveMerchantProduct(product: StoreOsProduct): boolean {
+  void product;
   return true;
 }
 

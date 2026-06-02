@@ -73,11 +73,16 @@ export async function editCatalogProductRequestAction(
 ): Promise<EditCatalogProductRequestActionResult> {
   const parsed = editCatalogRequestSchema.safeParse(raw);
   if (!parsed.success) {
+    const normalizedFieldErrors = Object.fromEntries(
+      Object.entries(parsed.error.flatten().fieldErrors).filter(
+        (entry): entry is [string, string[]] => Array.isArray(entry[1]),
+      ),
+    );
     return {
       ok: false,
       kind: "validation_error",
       message: "Μη έγκυρα δεδομένα επεξεργασίας.",
-      fieldErrors: parsed.error.flatten().fieldErrors,
+      fieldErrors: normalizedFieldErrors,
     };
   }
 
