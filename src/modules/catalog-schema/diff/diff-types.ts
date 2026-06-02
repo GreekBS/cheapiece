@@ -1,5 +1,4 @@
 import type { CategorySchemaFieldBinding } from "../types/schema-field";
-import type { DenormalizeMap, MatchingConfig } from "../types/category-schema-document";
 
 export type FieldChangeKind = "added" | "removed" | "changed" | "hidden" | "unchanged";
 

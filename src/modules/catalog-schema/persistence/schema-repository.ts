@@ -1,6 +1,5 @@
 import type { AttributeDefinition } from "../types/attribute-definition";
 import type { SchemaAuditEventInput, SchemaAuditEventRow } from "../audit/audit-event-types";
-import type { CategorySchemaSeed } from "../seed/types";
 import type {
   CategorySchemaVersionRecord,
   CategorySchemaVersionSummary,

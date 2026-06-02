@@ -28,7 +28,7 @@ type FieldInsert = {
 };
 
 export class SupabaseSchemaRepository implements SchemaRepository {
-  constructor(private readonly supabase: SupabaseClient<any, "public", any>) {}
+  constructor(private readonly supabase: SupabaseClient) {}
 
   async listAttributeDefinitions(tenantId: string): Promise<AttributeDefinition[]> {
     const { data, error } = await this.supabase

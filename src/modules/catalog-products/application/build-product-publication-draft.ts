@@ -1,6 +1,5 @@
 import type { CatalogProductRequestRow } from "@/modules/catalog-requests/types/catalog-product-request";
 import type { PinnedPublishedSchema } from "@/modules/catalog-requests/application/pinned-published-schema";
-import type { CatalogValidationMode } from "@/modules/catalog-requests/types/phase2-schema-baseline";
 
 import type { ProductPublicationDraft } from "../types/product-publication";
 import type { ProductDisplayScalars } from "../types/display-snapshot";

@@ -23,7 +23,6 @@ import type {
   CatalogRequestEvaluationContext,
   CatalogRequestEvaluationInput,
   CatalogRequestEvaluationResult,
-  CatalogRequestEvaluationValid,
 } from "../types/catalog-request-evaluation";
 import type { CatalogValidationMode } from "../types/phase2-schema-baseline";
 

@@ -33,7 +33,6 @@ function buildStrictGroups(
   descriptor: SchemaDescriptor,
   values: Record<string, unknown>,
 ): ProductDisplayGroup[] {
-  const fieldByCode = new Map(descriptor.fields.map((f) => [f.code, f]));
   const byGroup = new Map<string, ProductDisplayGroup["fields"]>();
 
   for (const field of descriptor.fields) {

@@ -48,5 +48,6 @@ export function resolveActiveStoreOsView(
   vendorId: string,
   _searchParams?: URLSearchParams,
 ): StoreOsActiveView {
+  void _searchParams;
   return viewFromStoreOsPathname(pathname, vendorId) ?? "overview";
 }

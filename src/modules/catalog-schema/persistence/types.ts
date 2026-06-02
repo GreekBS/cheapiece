@@ -1,5 +1,5 @@
 import type { AttributeDefinition } from "../types/attribute-definition";
-import type { CategorySchemaDocument, DenormalizeMap, MatchingConfig } from "../types/category-schema-document";
+import type { DenormalizeMap, MatchingConfig } from "../types/category-schema-document";
 import type { CategorySchemaFieldBinding } from "../types/schema-field";
 import type { CategorySchemaSeed } from "../seed/types";
 
