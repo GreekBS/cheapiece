@@ -30,7 +30,9 @@ const offer = (id: string, price: number, stock: number): MarketOfferDTO => ({
   currency: "EUR",
   condition: "new",
   stock,
+  vendorId: "v1",
   vendorName: "V",
+  vendorLogoUrl: null,
   updatedAt: null,
 });
 

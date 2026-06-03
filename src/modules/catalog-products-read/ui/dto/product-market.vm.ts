@@ -8,7 +8,9 @@ export type ProductMarketOfferVM = {
   currency: string;
   condition: string;
   stock: number;
+  vendorId: string;
   vendorName: string;
+  vendorLogoUrl: string | null;
   updatedAt: string | null;
 };
 

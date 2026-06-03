@@ -4,10 +4,15 @@ import type { MarketDiscoveryRow } from "../queries/search-market-offers";
 import type { MarketOfferDTO } from "../types/market-offer.dto";
 import { rankMarketOffers } from "../utils/ranking";
 
-import { pickVendorDisplayName, resolveVendorDisplayNames } from "./vendor-display-resolver";
+import {
+  pickVendorDisplayProfile,
+  resolveVendorDisplayProfiles,
+  type VendorDisplayProfile,
+} from "./vendor-display-resolver";
 
-function toDTO(row: MarketDiscoveryRow, vendorMap: Map<string, string>): MarketOfferDTO {
+function toDTO(row: MarketDiscoveryRow, vendorMap: Map<string, VendorDisplayProfile>): MarketOfferDTO {
   const price = typeof row.price_amount === "number" ? row.price_amount : parseFloat(String(row.price_amount));
+  const vendor = pickVendorDisplayProfile(row.vendor_id, vendorMap);
   return {
     id: row.id,
     productId: row.product_id,
@@ -19,7 +24,9 @@ function toDTO(row: MarketDiscoveryRow, vendorMap: Map<string, string>): MarketO
     currency: row.currency && String(row.currency).length === 3 ? String(row.currency).toUpperCase() : "EUR",
     condition: row.condition ?? "new",
     stock: row.stock_quantity ?? 0,
-    vendorName: pickVendorDisplayName(row.vendor_id, vendorMap),
+    vendorId: row.vendor_id,
+    vendorName: vendor.name,
+    vendorLogoUrl: vendor.logoUrl,
     updatedAt: row.updated_at,
   };
 }
@@ -33,7 +40,7 @@ export async function mapDiscoveryRowsToOfferDTOs(
     return [];
   }
   const ranked = rankMarketOffers(rows);
-  const vendorMap = await resolveVendorDisplayNames(
+  const vendorMap = await resolveVendorDisplayProfiles(
     db,
     ranked.map((r) => r.vendor_id),
   );

@@ -16,7 +16,9 @@ function offer(id: string, price: number, stock: number, updatedAt: string | nul
     currency: "EUR",
     condition: "new",
     stock,
+    vendorId: "v1",
     vendorName: "V",
+    vendorLogoUrl: null,
     updatedAt,
   };
 }

@@ -77,7 +77,9 @@ describe("mergeProductAggregatesForListing", () => {
       currency: "EUR",
       condition: "new",
       stock: 0,
+      vendorId: "v1",
       vendorName: "V",
+      vendorLogoUrl: null,
       updatedAt: null,
     };
 

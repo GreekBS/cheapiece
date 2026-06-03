@@ -20,15 +20,23 @@ export function MarketGridSkeleton({ count = 8 }: { count?: number }) {
 
 export function MarketDetailSkeleton() {
   return (
-    <div className="mx-auto max-w-4xl animate-pulse space-y-8">
-      <div className="h-4 w-32 rounded bg-zinc-100" />
-      <div className="grid gap-8 lg:grid-cols-2">
-        <div className="aspect-square rounded-2xl bg-zinc-100 lg:aspect-auto lg:min-h-[320px]" />
-        <div className="space-y-4">
-          <div className="h-8 w-full rounded bg-zinc-100" />
-          <div className="h-10 w-40 rounded bg-zinc-100" />
-          <div className="h-24 w-full rounded-xl bg-zinc-50" />
+    <div className="mx-auto max-w-6xl animate-pulse space-y-8 px-4 py-6 sm:px-6 sm:py-10">
+      <div className="h-4 w-40 rounded bg-zinc-100" />
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:items-start">
+        <div className="aspect-square max-h-[28rem] rounded-2xl bg-zinc-100" />
+        <div className="space-y-4 rounded-2xl border border-zinc-100 p-6">
+          <div className="h-10 w-32 rounded bg-zinc-100" />
+          <div className="h-12 w-full rounded bg-zinc-100" />
+          <div className="h-28 w-full rounded-xl bg-zinc-50" />
         </div>
+      </div>
+      <div className="space-y-3 rounded-2xl border border-zinc-100 p-6">
+        <div className="h-8 w-2/3 rounded bg-zinc-100" />
+        <div className="h-4 w-1/3 rounded bg-zinc-50" />
+      </div>
+      <div className="space-y-4">
+        <div className="h-32 rounded-2xl bg-zinc-100" />
+        <div className="h-32 rounded-2xl bg-zinc-100" />
       </div>
     </div>
   );

@@ -16,7 +16,9 @@ function mapOffer(offer: ProductAggregateDTO["buyableOffers"][number]): ProductM
     currency: offer.currency,
     condition: offer.condition,
     stock: offer.stock,
+    vendorId: offer.vendorId,
     vendorName: offer.vendorName,
+    vendorLogoUrl: offer.vendorLogoUrl,
     updatedAt: offer.updatedAt,
   };
 }
