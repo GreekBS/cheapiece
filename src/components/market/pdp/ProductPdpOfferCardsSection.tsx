@@ -29,30 +29,42 @@ export function ProductPdpOfferCardsSection({ product }: Props) {
   const primaryOfferId = product.primaryOffer?.id ?? null;
 
   return (
-    <section className="space-y-4" aria-labelledby="pdp-offers-heading">
-      <div className="space-y-1">
-        <h2 id="pdp-offers-heading" className="text-lg font-semibold text-zinc-900 sm:text-xl">
-          Σύγκριση καταστημάτων
-        </h2>
-        {showLowest && lowestPriceOffer ? (
-          <p className="text-sm text-zinc-600">
-            Χαμηλότερη τιμή{" "}
-            <span className="font-bold tabular-nums text-emerald-800">
-              {formatPdpMoney(lowestPriceOffer.price, lowestPriceOffer.currency)}
-            </span>
-            {" · "}
-            <span className="font-semibold text-zinc-900">{storeCount}</span> κατάστημα
-            {storeCount === 1 ? "" : "τα"}
+    <section
+      className="rounded-3xl border border-zinc-200/60 bg-gradient-to-b from-zinc-50/80 to-white/90 p-6 shadow-sm shadow-zinc-900/[0.03] sm:p-8"
+      aria-labelledby="pdp-offers-heading"
+    >
+      <div className="mb-6 flex flex-col gap-4 border-b border-zinc-200/60 pb-6 sm:flex-row sm:items-end sm:justify-between">
+        <div className="space-y-2">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-emerald-700/90">
+            Διαθέσιμες προσφορές
           </p>
+          <h2
+            id="pdp-offers-heading"
+            className="text-xl font-bold tracking-tight text-zinc-900 sm:text-2xl sm:leading-tight"
+          >
+            Σύγκριση καταστημάτων
+          </h2>
+        </div>
+        {showLowest && lowestPriceOffer ? (
+          <div className="rounded-2xl bg-white/80 px-4 py-3 shadow-sm ring-1 ring-zinc-200/50 sm:text-right">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">Χαμηλότερη τιμή</p>
+            <p className="mt-1 text-2xl font-bold tabular-nums leading-none tracking-tight text-emerald-800">
+              {formatPdpMoney(lowestPriceOffer.price, lowestPriceOffer.currency)}
+            </p>
+            <p className="mt-2 text-xs text-zinc-600">
+              <span className="font-semibold text-zinc-800">{storeCount}</span> κατάστημα
+              {storeCount === 1 ? "" : "τα"}
+            </p>
+          </div>
         ) : (
-          <p className="text-sm text-zinc-600">
+          <p className="text-sm text-zinc-600 sm:text-right">
             <span className="font-semibold text-zinc-900">{storeCount}</span> κατάστημα
             {storeCount === 1 ? "" : "τα"}
           </p>
         )}
       </div>
 
-      <div className="space-y-4">
+      <div className="grid gap-4">
         {shopRows.map((offer) => (
           <ProductPdpOfferCard
             key={offer.id}
