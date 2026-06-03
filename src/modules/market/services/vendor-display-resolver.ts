@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 
 const FALLBACK = "Marketplace Seller";
+const VENDOR_DISPLAY_RELATION = "marketplace_vendors_public";
 
 export type VendorDisplayProfile = {
   name: string;
@@ -8,7 +9,7 @@ export type VendorDisplayProfile = {
 };
 
 /**
- * Batch-resolve vendor display profiles using the same session + RLS as the caller.
+ * Batch-resolve vendor display profiles via marketplace_vendors_public (anon-safe view).
  * Missing rows → omitted (callers use fallback label).
  */
 export async function resolveVendorDisplayProfiles(
@@ -21,7 +22,10 @@ export async function resolveVendorDisplayProfiles(
     return map;
   }
 
-  const { data, error } = await db.from("vendors").select("id, name, logo_url").in("id", unique);
+  const { data, error } = await db
+    .from(VENDOR_DISPLAY_RELATION)
+    .select("id, name, logo_url")
+    .in("id", unique);
 
   if (error || !data) {
     return map;
