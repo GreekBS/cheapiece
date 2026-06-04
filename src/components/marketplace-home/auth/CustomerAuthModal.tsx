@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useId, useRef } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 import { ForgotPanel } from "@/components/marketplace-home/auth/ForgotPanel";
 import { SignInPanel } from "@/components/marketplace-home/auth/SignInPanel";
@@ -18,6 +19,12 @@ type Props = {
 
 export function CustomerAuthModal({ open, panel, onClose, onPanelChange, onAuthSuccess }: Props) {
   const titleId = useId();
+  const [mounted, setMounted] = useState(false);
+  const panelKeyRef = useRef(0);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -51,21 +58,19 @@ export function CustomerAuthModal({ open, panel, onClose, onPanelChange, onAuthS
     e.stopPropagation();
   }, []);
 
-  const panelKeyRef = useRef(0);
-
   useEffect(() => {
     if (open) {
       panelKeyRef.current += 1;
     }
   }, [open, panel]);
 
-  if (!open) {
+  if (!open || !mounted || typeof document === "undefined") {
     return null;
   }
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/55 p-4 backdrop-blur-[2px]"
+      className="fixed inset-0 z-[100] flex items-center justify-center overscroll-contain bg-black/55 p-4 backdrop-blur-[2px]"
       role="presentation"
       onPointerDown={onOverlayPointerDown}
     >
@@ -93,6 +98,7 @@ export function CustomerAuthModal({ open, panel, onClose, onPanelChange, onAuthS
           {panel === "forgot" ? <ForgotPanel onBackToSignIn={() => onPanelChange("sign-in")} /> : null}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
