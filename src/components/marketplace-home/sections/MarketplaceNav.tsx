@@ -1,8 +1,26 @@
 import Link from "next/link";
 
+import { MarketplaceNavAuthSlot } from "@/components/marketplace-home/auth/MarketplaceNavAuthSlot";
+import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { fetchProfileForUser } from "@/modules/identity/queries/profile-queries";
+
 import { IconCart, IconSearch, TsipisWordmark } from "../marketplace-icons";
 
-export function MarketplaceNav() {
+export async function MarketplaceNav() {
+  const supabase = await createServerSupabaseClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  let displayName: string | null = null;
+  if (user) {
+    const profile = await fetchProfileForUser(supabase, user.id);
+    displayName = profile?.display_name ?? null;
+    if (!displayName && typeof user.user_metadata?.display_name === "string") {
+      displayName = user.user_metadata.display_name;
+    }
+  }
+
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 shadow-[0_1px_0_rgba(15,23,42,0.04)] backdrop-blur-xl transition-shadow duration-300 supports-[backdrop-filter]:bg-white/75">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -48,12 +66,13 @@ export function MarketplaceNav() {
               >
                 <IconCart className="h-5 w-5" />
               </Link>
-              <Link
-                href="/merchant"
-                className="rounded-xl bg-gradient-to-b from-slate-800 to-slate-900 px-3.5 py-2 text-xs font-semibold text-white shadow-sm shadow-slate-900/25 transition duration-200 hover:from-slate-900 hover:to-slate-950 sm:px-4 sm:text-sm"
-              >
-                Σύνδεση
-              </Link>
+              <MarketplaceNavAuthSlot
+                initial={{
+                  userId: user?.id ?? null,
+                  email: user?.email ?? null,
+                  displayName,
+                }}
+              />
             </div>
           </div>
 
