@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
+  { href: "/account", label: "Επισκόπηση" },
   { href: "/account/profile", label: "Προφίλ" },
   { href: "/account/favorites", label: "Αγαπημένα" },
   { href: "/account/orders", label: "Παραγγελίες" },
@@ -11,6 +12,9 @@ const NAV_ITEMS = [
 ] as const;
 
 function isActive(pathname: string, href: string): boolean {
+  if (href === "/account") {
+    return pathname === "/account";
+  }
   if (href === "/account/profile") {
     return pathname === "/account/profile";
   }
