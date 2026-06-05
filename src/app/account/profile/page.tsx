@@ -1,28 +1,108 @@
+import Link from "next/link";
+
+import { IconUser } from "@/components/marketplace-home/marketplace-icons";
 import { requireCustomerSession } from "@/lib/auth/require-customer-session";
+
+const CARD_CLASS =
+  "rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm shadow-slate-900/[0.04]";
+
+function formatMemberSince(createdAt: string | undefined): string {
+  if (!createdAt) return "—";
+  return new Date(createdAt).toLocaleDateString("el-GR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+
+function truncateUserId(userId: string): string {
+  if (userId.length <= 8) return userId;
+  return `${userId.slice(0, 8)}…`;
+}
 
 export default async function AccountProfilePage() {
   const { user, profile } = await requireCustomerSession();
 
   const displayName =
-    profile?.display_name ??
-    (typeof user.user_metadata?.display_name === "string" ? user.user_metadata.display_name : null) ??
-    user.email ??
-    "";
+    (profile?.display_name ??
+      (typeof user.user_metadata?.display_name === "string" ? user.user_metadata.display_name : null) ??
+      user.email ??
+      "") || "Χρήστης";
+
+  const email = user.email ?? "—";
+  const memberSince = formatMemberSince(user.created_at);
+  const accountId = truncateUserId(user.id);
 
   return (
-    <div className="max-w-lg">
-      <h1 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">Προφίλ</h1>
-      <p className="mt-2 text-sm text-slate-600">Στοιχεία λογαριασμού marketplace.</p>
-      <dl className="mt-8 space-y-4 rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm shadow-slate-900/[0.04]">
-        <div>
-          <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Όνομα</dt>
-          <dd className="mt-1 text-sm text-slate-900">{displayName}</dd>
+    <div className="max-w-2xl space-y-6">
+      <div>
+        <h1 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">Προφίλ</h1>
+        <p className="mt-2 text-sm text-slate-600">Στοιχεία λογαριασμού marketplace.</p>
+      </div>
+
+      <section aria-labelledby="profile-info-heading" className={CARD_CLASS}>
+        <h2 id="profile-info-heading" className="text-sm font-semibold text-slate-900">
+          Στοιχεία προφίλ
+        </h2>
+        <div className="mt-4 flex items-center gap-4">
+          <div
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-slate-200/90 bg-slate-50 text-slate-500"
+            aria-hidden
+          >
+            <IconUser className="h-7 w-7" />
+          </div>
+          <div className="min-w-0">
+            <p className="truncate text-base font-semibold text-slate-900">{displayName}</p>
+            <p className="mt-0.5 truncate text-sm text-slate-600">{email}</p>
+          </div>
         </div>
-        <div>
-          <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Email</dt>
-          <dd className="mt-1 text-sm text-slate-900">{user.email}</dd>
-        </div>
-      </dl>
+      </section>
+
+      <section aria-labelledby="profile-summary-heading" className={CARD_CLASS}>
+        <h2 id="profile-summary-heading" className="text-sm font-semibold text-slate-900">
+          Σύνοψη λογαριασμού
+        </h2>
+        <dl className="mt-4 grid gap-4 sm:grid-cols-2">
+          <div>
+            <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Κατάσταση</dt>
+            <dd className="mt-1.5">
+              <span className="inline-flex rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-700">
+                Ενεργός
+              </span>
+            </dd>
+          </div>
+          <div>
+            <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Μέλος από</dt>
+            <dd className="mt-1.5 text-sm text-slate-900">{memberSince}</dd>
+          </div>
+          <div className="sm:col-span-2">
+            <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">ID λογαριασμού</dt>
+            <dd className="mt-1.5 font-mono text-xs text-slate-400" title={user.id}>
+              {accountId}
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section aria-labelledby="profile-actions-heading" className={CARD_CLASS}>
+        <h2 id="profile-actions-heading" className="text-sm font-semibold text-slate-900">
+          Γρήγορες ενέργειες
+        </h2>
+        <nav aria-label="Γρήγορες ενέργειες" className="mt-3 space-y-1">
+          <Link
+            href="/account/favorites"
+            className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-800 transition hover:bg-slate-50"
+          >
+            Αγαπημένα
+          </Link>
+          <Link
+            href="/account/orders"
+            className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-800 transition hover:bg-slate-50"
+          >
+            Παραγγελίες
+          </Link>
+        </nav>
+      </section>
     </div>
   );
 }
