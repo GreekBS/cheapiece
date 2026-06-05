@@ -8,9 +8,15 @@ import { ProductPdpOfferCardsSection } from "./pdp/ProductPdpOfferCardsSection";
 
 type Props = {
   product: ProductMarketViewModel;
+  initialFavorited?: boolean;
+  isAuthenticated?: boolean;
 };
 
-export function ProductMarketDetailView({ product }: Props) {
+export function ProductMarketDetailView({
+  product,
+  initialFavorited = false,
+  isAuthenticated = false,
+}: Props) {
   const heroUrl = product.primaryImageUrl ?? product.galleryImages[0]?.url ?? null;
 
   return (
@@ -34,7 +40,14 @@ export function ProductMarketDetailView({ product }: Props) {
       </header>
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] lg:items-start">
-        <ProductPdpGallery title={product.title} heroUrl={heroUrl} galleryImages={product.galleryImages} />
+        <ProductPdpGallery
+          title={product.title}
+          heroUrl={heroUrl}
+          galleryImages={product.galleryImages}
+          productId={product.productId}
+          initialFavorited={initialFavorited}
+          isAuthenticated={isAuthenticated}
+        />
         <ProductPdpHeroPricing product={product} />
       </div>
 

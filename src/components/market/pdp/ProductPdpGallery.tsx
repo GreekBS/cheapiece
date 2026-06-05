@@ -1,3 +1,5 @@
+import { FavoriteHeartButton } from "@/components/marketplace/favorites/FavoriteHeartButton";
+
 type GalleryImage = {
   url: string;
   sortOrder: number;
@@ -7,6 +9,9 @@ type Props = {
   title: string;
   heroUrl: string | null;
   galleryImages: GalleryImage[];
+  productId?: string;
+  initialFavorited?: boolean;
+  isAuthenticated?: boolean;
 };
 
 function ImagePlaceholder() {
@@ -28,10 +33,26 @@ function ImagePlaceholder() {
   );
 }
 
-export function ProductPdpGallery({ title, heroUrl, galleryImages }: Props) {
+export function ProductPdpGallery({
+  title,
+  heroUrl,
+  galleryImages,
+  productId,
+  initialFavorited = false,
+  isAuthenticated = false,
+}: Props) {
   return (
     <section className="group/gallery min-w-0 space-y-4" aria-label="Product images">
-      <div className="overflow-hidden rounded-2xl border border-zinc-200/60 bg-zinc-100 shadow-md shadow-zinc-900/[0.04]">
+      <div className="relative overflow-hidden rounded-2xl border border-zinc-200/60 bg-zinc-100 shadow-md shadow-zinc-900/[0.04]">
+        {productId ? (
+          <div className="absolute right-3 top-3 z-10">
+            <FavoriteHeartButton
+              productId={productId}
+              initialFavorited={initialFavorited}
+              isAuthenticated={isAuthenticated}
+            />
+          </div>
+        ) : null}
         {heroUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img

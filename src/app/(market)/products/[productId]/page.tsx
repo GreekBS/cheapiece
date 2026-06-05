@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { getFavoriteIdsForUser } from "@/actions/customer-favorites";
 import { ProductMarketDetailView } from "@/components/market/ProductMarketDetailView";
 import { getPublicMarketplaceTenantId } from "@/lib/marketplace/public-tenant";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
@@ -40,10 +41,19 @@ export default async function ProductCatalogPage({ params }: Props) {
   }
 
   const viewModel = result.viewModel;
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  const favoriteProductIds = user ? await getFavoriteIdsForUser() : [];
+  const isAuthenticated = Boolean(user);
 
   return (
     <div className="mx-auto max-w-6xl space-y-8 px-4 py-6 sm:px-6 sm:py-10">
-      <ProductMarketDetailView product={viewModel} />
+      <ProductMarketDetailView
+        product={viewModel}
+        initialFavorited={favoriteProductIds.includes(params.productId)}
+        isAuthenticated={isAuthenticated}
+      />
       {viewModel.specGroups.length > 0 ? (
         <ProductDisplaySpecsSection specGroups={viewModel.specGroups} />
       ) : null}
