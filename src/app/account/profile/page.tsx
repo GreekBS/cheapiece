@@ -1,10 +1,9 @@
 import Link from "next/link";
 
+import { ACCOUNT_CARD_CLASS, ACCOUNT_PAGE_CLASS } from "@/components/account/account-styles";
+import { AccountPageHeader } from "@/components/account/AccountPageHeader";
 import { IconUser } from "@/components/marketplace-home/marketplace-icons";
 import { requireCustomerSession } from "@/lib/auth/require-customer-session";
-
-const CARD_CLASS =
-  "rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm shadow-slate-900/[0.04]";
 
 function formatMemberSince(createdAt: string | undefined): string {
   if (!createdAt) return "—";
@@ -34,13 +33,10 @@ export default async function AccountProfilePage() {
   const accountId = truncateUserId(user.id);
 
   return (
-    <div className="max-w-2xl space-y-6">
-      <div>
-        <h1 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">Προφίλ</h1>
-        <p className="mt-2 text-sm text-slate-600">Στοιχεία λογαριασμού marketplace.</p>
-      </div>
+    <div className={ACCOUNT_PAGE_CLASS}>
+      <AccountPageHeader title="Προφίλ" subtitle="Στοιχεία λογαριασμού marketplace." />
 
-      <section aria-labelledby="profile-info-heading" className={CARD_CLASS}>
+      <section aria-labelledby="profile-info-heading" className={ACCOUNT_CARD_CLASS}>
         <h2 id="profile-info-heading" className="text-sm font-semibold text-slate-900">
           Στοιχεία προφίλ
         </h2>
@@ -58,7 +54,7 @@ export default async function AccountProfilePage() {
         </div>
       </section>
 
-      <section aria-labelledby="profile-summary-heading" className={CARD_CLASS}>
+      <section aria-labelledby="profile-summary-heading" className={ACCOUNT_CARD_CLASS}>
         <h2 id="profile-summary-heading" className="text-sm font-semibold text-slate-900">
           Σύνοψη λογαριασμού
         </h2>
@@ -84,7 +80,7 @@ export default async function AccountProfilePage() {
         </dl>
       </section>
 
-      <section aria-labelledby="profile-actions-heading" className={CARD_CLASS}>
+      <section aria-labelledby="profile-actions-heading" className={ACCOUNT_CARD_CLASS}>
         <h2 id="profile-actions-heading" className="text-sm font-semibold text-slate-900">
           Γρήγορες ενέργειες
         </h2>
