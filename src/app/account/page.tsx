@@ -1,25 +1,46 @@
 import Link from "next/link";
 
+const SECTIONS = [
+  {
+    href: "/account/profile",
+    title: "Προφίλ",
+    description: "Στοιχεία λογαριασμού και προσωπικές πληροφορίες.",
+  },
+  {
+    href: "/account/favorites",
+    title: "Αγαπημένα",
+    description: "Τα προϊόντα που αποθήκευσες.",
+  },
+  {
+    href: "/account/orders",
+    title: "Παραγγελίες",
+    description: "Ιστορικό παραγγελιών — σύντομα διαθέσιμο.",
+  },
+  {
+    href: "/account/settings",
+    title: "Ρυθμίσεις",
+    description: "Προτιμήσεις λογαριασμού — σύντομα διαθέσιμες.",
+  },
+] as const;
+
 export default function AccountHubPage() {
   return (
-    <div className="mx-auto max-w-lg px-4 py-10 sm:px-6 sm:py-14">
+    <div>
       <h1 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">Λογαριασμός</h1>
-      <p className="mt-2 text-sm text-slate-600">Διαχείριση του marketplace λογαριασμού σου.</p>
+      <p className="mt-2 text-sm text-slate-600">Καλώς ήρθες στον λογαριασμό σου στο marketplace.</p>
 
-      <nav className="mt-8 space-y-2 rounded-2xl border border-slate-200/90 bg-white p-2 shadow-sm shadow-slate-900/[0.04]">
-        <Link
-          href="/account/profile"
-          className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-800 transition hover:bg-slate-50"
-        >
-          Προφίλ
-        </Link>
-        <Link
-          href="/account/favorites"
-          className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-800 transition hover:bg-slate-50"
-        >
-          Αγαπημένα
-        </Link>
-      </nav>
+      <div className="mt-8 grid gap-3 sm:grid-cols-2">
+        {SECTIONS.map((section) => (
+          <Link
+            key={section.href}
+            href={section.href}
+            className="rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm shadow-slate-900/[0.04] transition hover:border-slate-300 hover:shadow-md"
+          >
+            <h2 className="text-base font-semibold text-slate-900">{section.title}</h2>
+            <p className="mt-1.5 text-sm text-slate-600">{section.description}</p>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

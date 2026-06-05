@@ -10,7 +10,7 @@ export default async function AccountFavoritesPage() {
   const cards = await fetchFavoriteProductCardsForUser(supabase, user.id, tenantId);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14">
+    <div>
       <h1 id="account-favorites-heading" className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">
         Αγαπημένα
       </h1>

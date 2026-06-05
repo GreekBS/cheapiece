@@ -10,8 +10,8 @@ export default async function AccountProfilePage() {
     "";
 
   return (
-    <div className="mx-auto max-w-lg px-4 py-10 sm:px-6 sm:py-14">
-      <h1 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">Το προφίλ μου</h1>
+    <div className="max-w-lg">
+      <h1 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">Προφίλ</h1>
       <p className="mt-2 text-sm text-slate-600">Στοιχεία λογαριασμού marketplace.</p>
       <dl className="mt-8 space-y-4 rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm shadow-slate-900/[0.04]">
         <div>
