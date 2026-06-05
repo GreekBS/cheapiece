@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { customerSignOutAction } from "@/actions/customer-auth";
-import { marketplaceSignInCta } from "@/components/marketplace-home/auth/marketplace-auth-tokens";
+import { IconUser } from "@/components/marketplace-home/marketplace-icons";
 
 type Props = {
   displayName: string;
@@ -12,20 +12,10 @@ type Props = {
   onSignOut: () => void;
 };
 
-function initialsFrom(name: string, email: string): string {
-  const source = name.trim() || email.trim();
-  if (!source) return "?";
-  const parts = source.split(/\s+/).filter(Boolean);
-  if (parts.length >= 2) {
-    return `${parts[0]![0] ?? ""}${parts[1]![0] ?? ""}`.toUpperCase();
-  }
-  return source.slice(0, 2).toUpperCase();
-}
-
 export function MarketplaceUserMenu({ displayName, email, onSignOut }: Props) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
-  const initials = initialsFrom(displayName, email);
+  const accountLabel = displayName.trim() || email.trim() || "Χρήστης";
 
   useEffect(() => {
     if (!open) return;
@@ -56,17 +46,12 @@ export function MarketplaceUserMenu({ displayName, email, onSignOut }: Props) {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className={`inline-flex max-w-[11rem] items-center gap-2 ${marketplaceSignInCta}`}
+        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200/90 bg-white text-slate-500 transition duration-200 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-800"
         aria-expanded={open}
         aria-haspopup="menu"
+        aria-label={`Λογαριασμός — ${accountLabel}`}
       >
-        <span
-          className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/15 text-[10px] font-bold text-white"
-          aria-hidden
-        >
-          {initials}
-        </span>
-        <span className="truncate">{displayName || email}</span>
+        <IconUser className="h-5 w-5" />
       </button>
 
       {open ? (
@@ -80,15 +65,7 @@ export function MarketplaceUserMenu({ displayName, email, onSignOut }: Props) {
             className="block px-4 py-2.5 text-sm text-slate-700 transition hover:bg-slate-50"
             onClick={() => setOpen(false)}
           >
-            Το προφίλ μου
-          </Link>
-          <Link
-            href="/account/settings"
-            role="menuitem"
-            className="block px-4 py-2.5 text-sm text-slate-700 transition hover:bg-slate-50"
-            onClick={() => setOpen(false)}
-          >
-            Ρυθμίσεις
+            Λογαριασμός
           </Link>
           <button
             type="button"
