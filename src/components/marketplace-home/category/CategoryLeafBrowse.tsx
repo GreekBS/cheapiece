@@ -17,6 +17,8 @@ type Props = {
   cards: ProductCardViewModel[];
   parsed: CategoryBrowseParsed;
   hasMore: boolean;
+  favoriteProductIds: readonly string[];
+  isAuthenticated: boolean;
 };
 
 function selectedFacetsFromParsed(parsed: CategoryBrowseParsed): Record<string, string> {
@@ -38,7 +40,10 @@ export function CategoryLeafBrowse({
   cards,
   parsed,
   hasMore,
+  favoriteProductIds,
+  isAuthenticated,
 }: Props) {
+  const favoriteSet = new Set(favoriteProductIds);
   const selectedBrand = parsed.brand ?? "";
   const brandOptions = [...brands];
   if (parsed.brand && !brandOptions.includes(parsed.brand)) {
@@ -78,6 +83,9 @@ export function CategoryLeafBrowse({
                   model={card.model}
                   priceLabel={card.priceLabel}
                   imageUrl={card.primaryImageUrl}
+                  productId={card.productId}
+                  initialFavorited={favoriteSet.has(card.productId)}
+                  isAuthenticated={isAuthenticated}
                 />
               </li>
             ))}

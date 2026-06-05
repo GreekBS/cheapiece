@@ -14,6 +14,7 @@ import {
   fetchPublicCategoryBySlugWithActiveChain,
   fetchPublicDirectChildCategories,
 } from "@/modules/catalog/queries/category-queries";
+import { getFavoriteIdsForUser } from "@/actions/customer-favorites";
 import { getCategoryProductList } from "@/modules/catalog-products-read/listing/get-category-product-list";
 import { mapAggregateToProductCardVM } from "@/modules/catalog-products-read/ui/mappers/map-aggregate-to-card-vm";
 import { loadCategoryBrandOptions } from "@/modules/catalog-products-read/ui/server/load-category-brand-options";
@@ -46,6 +47,11 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 export default async function PublicCategoryPage({ params, searchParams }: Props) {
   const raw = searchParams ?? {};
   const supabase = await createServerSupabaseClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  const favoriteProductIds = user ? await getFavoriteIdsForUser() : [];
+  const isAuthenticated = Boolean(user);
   const tenantId = getPublicMarketplaceTenantId();
   const category = await fetchPublicCategoryBySlugWithActiveChain(supabase, tenantId, params.slug);
   if (!category) notFound();
@@ -151,6 +157,8 @@ export default async function PublicCategoryPage({ params, searchParams }: Props
           cards={leafData.cards}
           parsed={parsed}
           hasMore={leafData.hasMore}
+          favoriteProductIds={favoriteProductIds}
+          isAuthenticated={isAuthenticated}
         />
       ) : null}
     </article>
