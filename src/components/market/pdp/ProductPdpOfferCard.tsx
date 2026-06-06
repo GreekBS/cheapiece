@@ -10,6 +10,7 @@ type Props = {
   productImageUrl: string | null;
   productTitle: string;
   isBestPrice: boolean;
+  isAuthenticated?: boolean;
 };
 
 function ProductThumbnail({ imageUrl, title }: { imageUrl: string | null; title: string }) {
@@ -40,7 +41,13 @@ function ProductThumbnail({ imageUrl, title }: { imageUrl: string | null; title:
   );
 }
 
-export function ProductPdpOfferCard({ offer, productImageUrl, productTitle, isBestPrice }: Props) {
+export function ProductPdpOfferCard({
+  offer,
+  productImageUrl,
+  productTitle,
+  isBestPrice,
+  isAuthenticated = false,
+}: Props) {
   const outOfStock = offer.stock <= 0;
   const inStock = !outOfStock;
 
@@ -93,7 +100,12 @@ export function ProductPdpOfferCard({ offer, productImageUrl, productTitle, isBe
 
           <div className="mt-auto flex flex-col gap-3 border-t border-zinc-100/80 pt-4 sm:flex-row sm:items-center sm:justify-between">
             <ProductPdpOfferCardAvailability stock={offer.stock} condition={offer.condition} />
-            <ProductPdpAddToCartButton className="w-full sm:w-auto sm:min-w-[11rem]" />
+            <ProductPdpAddToCartButton
+              offerId={offer.id}
+              stock={offer.stock}
+              isAuthenticated={isAuthenticated}
+              className="w-full sm:w-auto sm:min-w-[11rem]"
+            />
           </div>
         </div>
       </div>

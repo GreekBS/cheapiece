@@ -10,9 +10,10 @@ import { ProductPdpOfferCard } from "./ProductPdpOfferCard";
 
 type Props = {
   product: ProductMarketViewModel;
+  isAuthenticated?: boolean;
 };
 
-export function ProductPdpOfferCardsSection({ product }: Props) {
+export function ProductPdpOfferCardsSection({ product, isAuthenticated = false }: Props) {
   if (product.isOfferless) {
     return null;
   }
@@ -72,6 +73,7 @@ export function ProductPdpOfferCardsSection({ product }: Props) {
             productImageUrl={productImageUrl}
             productTitle={product.title}
             isBestPrice={primaryOfferId !== null && offer.id === primaryOfferId}
+            isAuthenticated={isAuthenticated}
           />
         ))}
       </div>

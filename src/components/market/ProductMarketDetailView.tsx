@@ -51,7 +51,7 @@ export function ProductMarketDetailView({
         <ProductPdpHeroPricing product={product} />
       </div>
 
-      <ProductPdpOfferCardsSection product={product} />
+      <ProductPdpOfferCardsSection product={product} isAuthenticated={isAuthenticated} />
     </div>
   );
 }
