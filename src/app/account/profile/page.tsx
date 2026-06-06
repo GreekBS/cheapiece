@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { ACCOUNT_CARD_CLASS, ACCOUNT_PAGE_CLASS } from "@/components/account/account-styles";
 import { AccountPageHeader } from "@/components/account/AccountPageHeader";
+import { ProfileDisplayNameForm } from "@/components/account/ProfileDisplayNameForm";
 import { IconUser } from "@/components/marketplace-home/marketplace-icons";
 import { requireCustomerSession } from "@/lib/auth/require-customer-session";
 
@@ -28,6 +29,11 @@ export default async function AccountProfilePage() {
       user.email ??
       "") || "Χρήστης";
 
+  const editDisplayName =
+    profile?.display_name ??
+    (typeof user.user_metadata?.display_name === "string" ? user.user_metadata.display_name : null) ??
+    "";
+
   const email = user.email ?? "—";
   const memberSince = formatMemberSince(user.created_at);
   const accountId = truncateUserId(user.id);
@@ -40,16 +46,16 @@ export default async function AccountProfilePage() {
         <h2 id="profile-info-heading" className="text-sm font-semibold text-slate-900">
           Στοιχεία προφίλ
         </h2>
-        <div className="mt-4 flex items-center gap-4">
+        <div className="mt-4 flex items-start gap-4">
           <div
             className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-slate-200/90 bg-slate-50 text-slate-500"
             aria-hidden
           >
             <IconUser className="h-7 w-7" />
           </div>
-          <div className="min-w-0">
+          <div className="min-w-0 flex-1">
             <p className="truncate text-base font-semibold text-slate-900">{displayName}</p>
-            <p className="mt-0.5 truncate text-sm text-slate-600">{email}</p>
+            <ProfileDisplayNameForm initialDisplayName={editDisplayName} email={email} />
           </div>
         </div>
       </section>
