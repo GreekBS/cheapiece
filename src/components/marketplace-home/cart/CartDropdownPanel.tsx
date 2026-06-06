@@ -10,7 +10,6 @@ import { CartDropdownLoading } from "./CartDropdownLoading";
 export const CART_DROPDOWN_PREVIEW_LINE_CAP = 5;
 
 type Props = {
-  initialItemCount: number;
   loading: boolean;
   fetchError: string | null;
   preview: CartSnapshot | null;
@@ -19,14 +18,13 @@ type Props = {
 };
 
 export function CartDropdownPanel({
-  initialItemCount,
   loading,
   fetchError,
   preview,
   onClose,
   onPreviewInvalidate,
 }: Props) {
-  const isEmpty = initialItemCount === 0 || (preview !== null && preview.lines.length === 0);
+  const isEmpty = !loading && !fetchError && preview !== null && preview.lines.length === 0;
   const visibleLines = preview?.lines.slice(0, CART_DROPDOWN_PREVIEW_LINE_CAP) ?? [];
   const hiddenLineCount = preview ? Math.max(0, preview.lineCount - visibleLines.length) : 0;
   const subtotalLabel =
@@ -43,9 +41,7 @@ export function CartDropdownPanel({
       </div>
 
       <div className="max-h-[min(70vh,28rem)] overflow-y-auto">
-        {isEmpty && !loading ? (
-          <CartDropdownEmpty onContinueShopping={onClose} />
-        ) : null}
+        {isEmpty ? <CartDropdownEmpty onContinueShopping={onClose} /> : null}
 
         {loading ? <CartDropdownLoading /> : null}
 
@@ -64,7 +60,7 @@ export function CartDropdownPanel({
         ) : null}
       </div>
 
-      {!isEmpty && preview && preview.lines.length > 0 && !loading ? (
+      {!loading && !fetchError && preview && preview.lines.length > 0 ? (
         <div className="border-t border-slate-100 bg-slate-50/80 px-4 py-3">
           {hiddenLineCount > 0 ? (
             <p className="mb-2 text-xs text-slate-600">
@@ -86,7 +82,7 @@ export function CartDropdownPanel({
             onClick={onClose}
             className="mt-3 inline-flex w-full items-center justify-center rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800"
           >
-            Προβολή καλαθιού
+            Μετάβαση στο καλάθι
           </Link>
         </div>
       ) : null}

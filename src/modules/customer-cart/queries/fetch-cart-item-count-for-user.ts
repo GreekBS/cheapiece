@@ -7,14 +7,12 @@ export async function fetchCartItemCountForUser(
 ): Promise<number> {
   const { data, error } = await supabase
     .from("user_cart_items")
-    .select("quantity.sum()")
-    .eq("user_id", userId)
-    .maybeSingle();
+    .select("quantity")
+    .eq("user_id", userId);
 
   if (error || !data) {
     return 0;
   }
 
-  const sum = (data as { sum: number | null }).sum;
-  return sum ?? 0;
+  return data.reduce((sum, row) => sum + (row.quantity as number), 0);
 }

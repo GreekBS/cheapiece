@@ -69,13 +69,6 @@ export function MarketplaceNavCartSlot({ initialItemCount }: Props) {
       return;
     }
 
-    if (initialItemCount === 0) {
-      setLoading(false);
-      setFetchError(null);
-      setPreview(null);
-      return;
-    }
-
     if (preview !== null && previewCountRef.current === initialItemCount) {
       return;
     }
@@ -142,7 +135,6 @@ export function MarketplaceNavCartSlot({ initialItemCount }: Props) {
 
       {open ? (
         <CartDropdownPanel
-          initialItemCount={initialItemCount}
           loading={loading}
           fetchError={fetchError}
           preview={preview}

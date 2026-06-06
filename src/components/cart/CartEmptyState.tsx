@@ -5,15 +5,15 @@ import { IconCart } from "@/components/marketplace-home/marketplace-icons";
 export function CartEmptyState() {
   return (
     <div className="flex flex-1 flex-col items-center justify-center px-4 py-16 sm:py-24">
-      <div className="flex max-w-md flex-col items-center text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">Το καλάθι σου είναι άδειο</h1>
+      <div className="mx-auto w-full max-w-md rounded-2xl border border-slate-200/90 bg-white px-6 py-10 text-center shadow-sm shadow-slate-900/[0.04] sm:px-8">
         <div
-          className="mt-8 flex h-28 w-28 items-center justify-center rounded-3xl border border-slate-200/90 bg-white shadow-sm shadow-slate-900/[0.06] ring-1 ring-slate-900/[0.03]"
+          className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-slate-200/90 bg-slate-50 text-slate-400"
           aria-hidden
         >
-          <IconCart className="h-14 w-14 text-slate-400" />
+          <IconCart className="h-7 w-7" />
         </div>
-        <p className="mx-auto mt-6 max-w-sm text-sm text-slate-600">
+        <h1 className="mt-4 text-base font-semibold text-slate-900 sm:text-lg">Το καλάθι σου είναι άδειο</h1>
+        <p className="mx-auto mt-2 max-w-sm text-sm text-slate-600">
           Περιήγησε στο marketplace και πρόσθεσε προϊόντα στο καλάθι σου από τη σελίδα προϊόντος.
         </p>
         <Link
