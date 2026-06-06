@@ -1,10 +1,12 @@
 import Link from "next/link";
 
+import { getCartCount } from "@/actions/customer-cart";
 import { MarketplaceNavAuthSlot } from "@/components/marketplace-home/auth/MarketplaceNavAuthSlot";
+import { MarketplaceNavCartSlot } from "@/components/marketplace-home/cart/MarketplaceNavCartSlot";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { fetchProfileForUser } from "@/modules/identity/queries/profile-queries";
 
-import { IconCart, IconSearch, TsipisWordmark } from "../marketplace-icons";
+import { IconSearch, TsipisWordmark } from "../marketplace-icons";
 
 export async function MarketplaceNav() {
   const supabase = await createServerSupabaseClient();
@@ -20,6 +22,8 @@ export async function MarketplaceNav() {
       displayName = user.user_metadata.display_name;
     }
   }
+
+  const initialItemCount = await getCartCount();
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 shadow-[0_1px_0_rgba(15,23,42,0.04)] backdrop-blur-xl transition-shadow duration-300 supports-[backdrop-filter]:bg-white/75">
@@ -59,13 +63,7 @@ export async function MarketplaceNav() {
             </nav>
 
             <div className="ml-auto flex shrink-0 items-center gap-1 sm:ml-0 sm:gap-2">
-              <Link
-                href="/cart"
-                className="inline-flex rounded-xl border border-slate-200/90 bg-white p-2 text-slate-500 transition duration-200 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-800"
-                aria-label="Καλάθι"
-              >
-                <IconCart className="h-5 w-5" />
-              </Link>
+              <MarketplaceNavCartSlot initialItemCount={initialItemCount} />
               <MarketplaceNavAuthSlot
                 initial={{
                   userId: user?.id ?? null,
