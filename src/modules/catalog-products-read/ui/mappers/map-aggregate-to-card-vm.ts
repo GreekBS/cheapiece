@@ -39,5 +39,7 @@ export function mapAggregateToProductCardVM(
     hasOffers: activeCount > 0,
     offerCount: activeCount,
     primaryImageUrl: primaryImageUrl ?? null,
+    primaryOfferId: primary?.id ?? null,
+    primaryOfferStock: primary?.stock ?? 0,
   };
 }

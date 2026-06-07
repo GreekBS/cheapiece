@@ -2,6 +2,8 @@ import Link from "next/link";
 
 import { FavoriteHeartButton } from "@/components/marketplace/favorites/FavoriteHeartButton";
 
+import { MarketplaceProductCardQuickAddButton } from "./MarketplaceProductCardQuickAddButton";
+
 export type MarketplaceProductCardProps = {
   href: string;
   title: string;
@@ -13,6 +15,9 @@ export type MarketplaceProductCardProps = {
   productId?: string;
   initialFavorited?: boolean;
   isAuthenticated?: boolean;
+  showQuickAdd?: boolean;
+  quickAddOfferId?: string | null;
+  quickAddOfferStock?: number;
 };
 
 function ImagePlaceholder() {
@@ -41,6 +46,9 @@ export function MarketplaceProductCard({
   productId,
   initialFavorited = false,
   isAuthenticated = false,
+  showQuickAdd = false,
+  quickAddOfferId = null,
+  quickAddOfferStock = 0,
 }: MarketplaceProductCardProps) {
   const meta = model?.trim() || null;
   const price = priceLabel?.trim() || null;
@@ -84,9 +92,21 @@ export function MarketplaceProductCard({
 
           <div className="order-4 mt-auto flex flex-col gap-2 border-t border-zinc-100 pt-3">
             <p className="min-h-[1.375rem] text-sm font-semibold tabular-nums text-zinc-900">{price ?? "—"}</p>
-            <span className="inline-flex w-full items-center justify-center rounded-lg bg-zinc-900 px-3 py-2 text-center text-xs font-semibold text-white transition group-hover:bg-zinc-800">
-              {ctaLabel}
-            </span>
+            {showQuickAdd ? (
+              <MarketplaceProductCardQuickAddButton
+                offerId={quickAddOfferId}
+                stock={quickAddOfferStock}
+                isAuthenticated={isAuthenticated}
+              >
+                <span className="inline-flex flex-1 items-center justify-center rounded-lg bg-zinc-900 px-3 py-2 text-center text-xs font-semibold text-white transition group-hover:bg-zinc-800">
+                  {ctaLabel}
+                </span>
+              </MarketplaceProductCardQuickAddButton>
+            ) : (
+              <span className="inline-flex w-full items-center justify-center rounded-lg bg-zinc-900 px-3 py-2 text-center text-xs font-semibold text-white transition group-hover:bg-zinc-800">
+                {ctaLabel}
+              </span>
+            )}
           </div>
         </div>
       </Link>

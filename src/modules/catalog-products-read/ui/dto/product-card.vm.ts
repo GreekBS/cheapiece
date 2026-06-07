@@ -12,4 +12,6 @@ export type ProductCardViewModel = {
   hasOffers: boolean;
   offerCount: number;
   primaryImageUrl?: string | null;
+  primaryOfferId: string | null;
+  primaryOfferStock: number;
 };

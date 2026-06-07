@@ -86,6 +86,9 @@ export function CategoryLeafBrowse({
                   productId={card.productId}
                   initialFavorited={favoriteSet.has(card.productId)}
                   isAuthenticated={isAuthenticated}
+                  showQuickAdd
+                  quickAddOfferId={card.primaryOfferId}
+                  quickAddOfferStock={card.primaryOfferStock}
                 />
               </li>
             ))}
