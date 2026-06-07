@@ -41,7 +41,7 @@ export default async function MerchantHubPage({ searchParams }: { searchParams?:
 
   return (
     <>
-      <MerchantHubTopBar showSignInButton returnUrlHint={returnUrlHint} />
+      <MerchantHubTopBar authMode="guest" returnUrlHint={returnUrlHint} />
       <div className="mx-auto w-full max-w-7xl px-4 pb-20 pt-10 sm:px-6 lg:pb-24 lg:pt-16">
         <MerchantGatewayLanding />
       </div>

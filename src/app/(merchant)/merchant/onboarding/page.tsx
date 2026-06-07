@@ -26,7 +26,7 @@ export default async function MerchantOnboardingPage() {
 
   return (
     <>
-      <MerchantHubTopBar showSignInButton={false} />
+      <MerchantHubTopBar authMode="authenticated" userEmail={user.email ?? user.id} />
       <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
         <div className="grid items-stretch gap-6 lg:grid-cols-2 lg:gap-8">
         <MerchantValuePanel />
